@@ -7,6 +7,13 @@ import org.json.JSONObject;
  * 保存全局变量及方法
  */
 public class Global {
-    protected static JSONObject newsData;
+    private static JSONObject newsData;
 
+    public static void setNewsData(JSONObject newsData) {
+        Global.newsData = newsData;
+    }
+
+    public static JSONObject getNewsData() {
+        return newsData;
+    }
 }
