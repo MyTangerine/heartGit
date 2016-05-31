@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.heartblood.heartgit.R;
 import com.heartblood.heartgit.common.AppActivity;
 import com.heartblood.heartgit.common.adapter.NewsListAdapter;
@@ -38,7 +39,7 @@ public class NewsActivity extends AppActivity {
         setContentView(R.layout.activity_news);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-
+        Fresco.initialize(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         getNews("http://119.29.58.43/api/getSfBlog/getPage=1", this);
     }
