@@ -5,5 +5,14 @@ import android.content.Context;
 /**
  * Created by heartblood on 16/5/27.
  */
-public abstract  class AppActivity extends BaseActivity{
+public class AppActivity extends BaseActivity{
+    @Override
+    protected int getContentViewId() {
+        return 0;
+    }
+
+    @Override
+    protected int getFragmentContentId() {
+        return 0;
+    }
 }
