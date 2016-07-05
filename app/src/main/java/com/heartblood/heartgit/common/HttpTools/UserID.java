@@ -176,8 +176,8 @@ public class UserID {
      */
     public static void blockID(Context context,String accid){
         String nonce = getNonce();
-        String curTiem = getCurTime();
-        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTiem);
+        String curTime = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTime);
         String e = "accid="+accid;
         StringEntity entity = null;
         try {
@@ -188,7 +188,7 @@ public class UserID {
         HttpClient.clearHeader();
         HttpClient.addOneHeader("AppKey",APP_KEY);
         HttpClient.addOneHeader("Nonce",nonce);
-        HttpClient.addOneHeader("CurTime",curTiem);
+        HttpClient.addOneHeader("CurTime",curTime);
         HttpClient.addOneHeader("CheckSum",checkSum);
         HttpClient.post(context,"https://api.netease.im/nimserver/user/block.action",entity,"application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
             @Override
@@ -199,7 +199,244 @@ public class UserID {
         });
     }
 
+    /**
+     *
+     * @param context
+     * @param accid
+     * @param name
+     */
+    public static void refreshIDName(Context context ,String accid ,String name ){
+        String nonce = getNonce();
+        String curTime = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTime);
+        String e = "accid="+accid+"&"+"name="+name;
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(e);
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+        }
 
+        HttpClient.clearHeader();
+        HttpClient.addOneHeader("AppKey",APP_KEY);
+        HttpClient.addOneHeader("Nonce",nonce);
+        HttpClient.addOneHeader("CurTime",curTime);
+        HttpClient.addOneHeader("CheckSum",checkSum);
+        HttpClient.post(context,"https://api.netease.im/nimserver/user/block.action",entity,"application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.e("123","昵称更新操作状态码:"+Integer.toString(statusCode));
+            }
+        });
+
+    }
+
+    /**
+     *
+     * @param context
+     * @param accid
+     * @param icon
+     */
+    public static void refreshIDIcon(Context context ,String accid ,String icon ){
+        String nonce = getNonce();
+        String curTime = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTime);
+        String e = "accid="+accid+"&"+"icon="+icon;
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(e);
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+        }
+
+        HttpClient.clearHeader();
+        HttpClient.addOneHeader("AppKey",APP_KEY);
+        HttpClient.addOneHeader("Nonce",nonce);
+        HttpClient.addOneHeader("CurTime",curTime);
+        HttpClient.addOneHeader("CheckSum",checkSum);
+        HttpClient.post(context,"https://api.netease.im/nimserver/user/block.action",entity,"application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.e("123","头像更新操作状态码:"+Integer.toString(statusCode));
+            }
+        });
+
+    }
+
+    /**
+     *
+     * @param context
+     * @param accid
+     * @param sign
+     */
+    public static void refreshIDSign(Context context ,String accid ,String sign ){
+        String nonce = getNonce();
+        String curTime = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTime);
+        String e = "accid="+accid+"&"+"sign="+sign;
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(e);
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+        }
+
+        HttpClient.clearHeader();
+        HttpClient.addOneHeader("AppKey",APP_KEY);
+        HttpClient.addOneHeader("Nonce",nonce);
+        HttpClient.addOneHeader("CurTime",curTime);
+        HttpClient.addOneHeader("CheckSum",checkSum);
+        HttpClient.post(context,"https://api.netease.im/nimserver/user/block.action",entity,"application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.e("123","签名更新操作状态码:"+Integer.toString(statusCode));
+            }
+        });
+
+    }
+
+    /**
+     *
+     * @param context
+     * @param accid
+     * @param email
+     */
+    public static void refreshIDEmail(Context context ,String accid ,String email ){
+        String nonce = getNonce();
+        String curTime = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTime);
+        String e = "accid="+accid+"&"+"email="+email;
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(e);
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+        }
+
+        HttpClient.clearHeader();
+        HttpClient.addOneHeader("AppKey",APP_KEY);
+        HttpClient.addOneHeader("Nonce",nonce);
+        HttpClient.addOneHeader("CurTime",curTime);
+        HttpClient.addOneHeader("CheckSum",checkSum);
+        HttpClient.post(context,"https://api.netease.im/nimserver/user/block.action",entity,"application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.e("123","邮箱更新操作状态码:"+Integer.toString(statusCode));
+            }
+        });
+
+    }
+
+    /**
+     *
+     * @param context
+     * @param accid
+     * @param birth
+     */
+    public static void refreshIDBirth(Context context ,String accid ,String birth ){
+        String nonce = getNonce();
+        String curTime = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTime);
+        String e = "accid="+accid+"&"+"birth="+birth;
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(e);
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+        }
+
+        HttpClient.clearHeader();
+        HttpClient.addOneHeader("AppKey",APP_KEY);
+        HttpClient.addOneHeader("Nonce",nonce);
+        HttpClient.addOneHeader("CurTime",curTime);
+        HttpClient.addOneHeader("CheckSum",checkSum);
+        HttpClient.post(context,"https://api.netease.im/nimserver/user/block.action",entity,"application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.e("123","生日更新操作状态码:"+Integer.toString(statusCode));
+            }
+        });
+
+    }
+
+    /**
+     *
+     * @param context
+     * @param accid
+     * @param mobile
+     */
+    public static void refreshIDMobile(Context context ,String accid ,String mobile ){
+        String nonce = getNonce();
+        String curTime = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTime);
+        String e = "accid="+accid+"&"+"mobile="+mobile;
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(e);
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+        }
+
+        HttpClient.clearHeader();
+        HttpClient.addOneHeader("AppKey",APP_KEY);
+        HttpClient.addOneHeader("Nonce",nonce);
+        HttpClient.addOneHeader("CurTime",curTime);
+        HttpClient.addOneHeader("CheckSum",checkSum);
+        HttpClient.post(context,"https://api.netease.im/nimserver/user/block.action",entity,"application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.e("123","手机号更新操作状态码:"+Integer.toString(statusCode));
+            }
+        });
+
+    }
+
+
+    /**
+     *
+     * @param context
+     * @param accid
+     * @param gender 0表示不知，1表示男，2表示女，其他参数会报错
+     */
+    public static void refreshIDGender(Context context ,String accid ,String gender ){
+        String nonce = getNonce();
+        String curTime = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTime);
+        String e = "accid="+accid+"&"+"gender="+gender;
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(e);
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+        }
+
+        HttpClient.clearHeader();
+        HttpClient.addOneHeader("AppKey",APP_KEY);
+        HttpClient.addOneHeader("Nonce",nonce);
+        HttpClient.addOneHeader("CurTime",curTime);
+        HttpClient.addOneHeader("CheckSum",checkSum);
+        HttpClient.post(context,"https://api.netease.im/nimserver/user/block.action",entity,"application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.e("123","性别更新操作状态码:"+Integer.toString(statusCode));
+            }
+        });
+
+    }
 
 
 
