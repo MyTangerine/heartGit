@@ -137,7 +137,7 @@ public class UserID {
      */
 
     public static String getRefreshToken(Context context,String accid){
-         final String token = null;
+        final String token = null;
         String nonce = getNonce();
         String curTime = getCurTime();
         String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTime);
@@ -166,8 +166,42 @@ public class UserID {
                 t = token;
             }
         });
-           return token;
+        return token;
     }
+
+    /**
+     *
+     * @param context
+     * @param accid
+     */
+    public static void blockID(Context context,String accid){
+        String nonce = getNonce();
+        String curTiem = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET,nonce,curTiem);
+        String e = "accid="+accid;
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(e);
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+        }
+        HttpClient.clearHeader();
+        HttpClient.addOneHeader("AppKey",APP_KEY);
+        HttpClient.addOneHeader("Nonce",nonce);
+        HttpClient.addOneHeader("CurTime",curTiem);
+        HttpClient.addOneHeader("CheckSum",checkSum);
+        HttpClient.post(context,"https://api.netease.im/nimserver/user/block.action",entity,"application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.e("123",Integer.toString(statusCode));
+            }
+        });
+    }
+
+
+
+
 
     /**
      *
