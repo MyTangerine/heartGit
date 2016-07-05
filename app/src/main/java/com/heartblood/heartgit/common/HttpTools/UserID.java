@@ -47,12 +47,12 @@ public class UserID {
         } catch (UnsupportedEncodingException e1) {
             e1.printStackTrace();
         }
-        HttpClicent.clearHeader();
-        HttpClicent.addOneHeader("AppKey",appKey);
-        HttpClicent.addOneHeader("Nonce",nonce);
-        HttpClicent.addOneHeader("CurTime",curTime);
-        HttpClicent.addOneHeader("CheckSum",checkSum);
-        HttpClicent.post(context,"https://api.netease.im/nimserver/user/create.action", entity, "application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
+        HttpClient.clearHeader();
+        HttpClient.addOneHeader("AppKey",appKey);
+        HttpClient.addOneHeader("Nonce",nonce);
+        HttpClient.addOneHeader("CurTime",curTime);
+        HttpClient.addOneHeader("CheckSum",checkSum);
+        HttpClient.post(context,"https://api.netease.im/nimserver/user/create.action", entity, "application/x-www-form-urlencoded",new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, org.json.JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
