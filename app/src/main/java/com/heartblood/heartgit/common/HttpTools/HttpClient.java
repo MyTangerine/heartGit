@@ -12,7 +12,7 @@ import cz.msebera.android.httpclient.HttpEntity;
 /**
  * Created by Tangerine on 16/7/5.
  */
-public class HttpClicent {
+public class HttpClient {
     /**
      *
      */

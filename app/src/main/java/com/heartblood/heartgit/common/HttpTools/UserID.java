@@ -27,6 +27,33 @@ import cz.msebera.android.httpclient.entity.StringEntity;
  * Created by Tangerine on 16/7/5.
  */
 public class UserID {
+
+    private static  final String APP_KEY = "3b120569699fff06d95365705aad8262";
+    private static  final String APP_SECRET = "77d4056a53ee";
+
+
+    /**
+     *
+     * @return Nonce
+     */
+    private static String getNonce(){
+        String nonce = new String();
+        int a[] = new int[10];
+        for(int i=0;i<a.length;i++ ) {
+            a[i] = (int)(10*(Math.random()));
+            nonce +=a;
+        }
+        return nonce;
+    }
+
+    /**
+     *
+     * @return curTime
+     */
+    private static String getCurTime(){
+        return String.valueOf((new Date()).getTime() / 1000L);
+    }
+
     /**
      *
      * @param context
@@ -34,21 +61,24 @@ public class UserID {
      * @param name
      * @param token
      */
-    public static void CreateID(Context context, String accid, String name, String token){
-        String appKey = "3b120569699fff06d95365705aad8262";
-        String appSecret = "77d4056a53ee";
-        String nonce =  "asdasdasda";
-        String curTime = String.valueOf((new Date()).getTime() / 1000L);
-        String checkSum = CheckSumBuilder.getCheckSum(appSecret, nonce ,curTime);
+    public static void CreateID( Context context, String accid, String name, String token){
+        String nonce = getNonce();
+        String curTime = getCurTime();
+        String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET, nonce ,curTime);
         String e = "accid="+accid+"&"+"name="+name+"&"+"token="+token;
         StringEntity entity =null;
+
+
+
         try {
             entity = new StringEntity(e);
         } catch (UnsupportedEncodingException e1) {
             e1.printStackTrace();
         }
+
+
         HttpClient.clearHeader();
-        HttpClient.addOneHeader("AppKey",appKey);
+        HttpClient.addOneHeader("AppKey", APP_KEY);
         HttpClient.addOneHeader("Nonce",nonce);
         HttpClient.addOneHeader("CurTime",curTime);
         HttpClient.addOneHeader("CheckSum",checkSum);
@@ -70,6 +100,10 @@ public class UserID {
         });
     }
 
+
+
+
+
     /**
      *
      * @param sessionId String,CustomId,接收方帐户ID
@@ -84,6 +118,7 @@ public class UserID {
         );
         NIMClient.getService(MsgService.class).sendMessage(message,false);
     }
+
 
     /**
      *
