@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Environment;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.SDKOptions;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
@@ -21,11 +22,8 @@ public class initSDK extends Application {
 
     public void onCreate() {
         super.onCreate();
-
-
+        Fresco.initialize(this);
         NIMClient.init(this, getLoginInfo(), options());
-
-
     }
 
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.percent.PercentFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/code_preview_item"
+        android:orientation="horizontal"
+        >
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/code_img_item"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_heightPercent="40%"
+                app:layout_widthPercent="100%"
+                android:id="@+id/code_title_item"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_heightPercent="30%"
+                app:layout_widthPercent="100%"
+                android:id="@+id/code_profile_item"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_heightPercent="30%"
+                app:layout_widthPercent="100%"
+                android:id="@+id/code_me_item"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+    </android.support.percent.PercentFrameLayout>
+</LinearLayout>
